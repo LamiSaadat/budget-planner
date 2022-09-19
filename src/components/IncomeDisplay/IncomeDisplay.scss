@@ -1,0 +1,13 @@
+.income {
+  &__details {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__month,
+  &__amount {
+    padding: 0.5rem 1rem;
+    width: 30%;
+    border: 0.05rem solid rgb(130, 128, 128);
+  }
+}
