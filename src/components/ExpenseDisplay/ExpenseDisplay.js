@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import ExpensesItems from "../ExpenseItems/ExpensesItems";
 
 import "./ExpenseDisplay.scss";
 
@@ -15,15 +16,8 @@ export default function ExpenseDisplay() {
         <p className="expenses__item">{expenses[0].item}</p>
         <h3 className="expenses__amount">Amount</h3>
         <p className="expenses__amount">{expenses[0].amount}</p>
-        <div>
-          Item
-          <input></input>
-        </div>
-        <div>
-          Amount
-          <input></input>
-        </div>
       </div>
+      <ExpensesItems />
     </div>
   );
 }
