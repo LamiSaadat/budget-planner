@@ -27,6 +27,8 @@ export const expensesSlice = createSlice({
   },
 });
 
+export const { expenseAdded } = expensesSlice.actions;
+
 export default expensesSlice.reducer;
 
 // function addExpenseItem(item) {
