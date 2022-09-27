@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import ExpensesItems from "../ExpenseItems/ExpensesItems";
+import AddExpenseForm from "../AddExpenseForm/AddExpenseForm";
 
 import "./ExpenseDisplay.scss";
 
@@ -17,7 +17,7 @@ export default function ExpenseDisplay() {
         <h3 className="expenses__amount">Amount</h3>
         <p className="expenses__amount">{expenses[0].amount}</p>
       </div>
-      <ExpensesItems />
+      <AddExpenseForm />
     </div>
   );
 }

@@ -8,13 +8,7 @@ function nextItem(item) {
 export const expensesSlice = createSlice({
   name: "expenses",
   initialState: {
-    expenses: [
-      {
-        id: 1,
-        item: "grocery",
-        amount: 40,
-      },
-    ],
+    expenses: [{}],
   },
   reducers: {
     expenseAdded: (state, action) => {

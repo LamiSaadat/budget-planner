@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-export default function ExpensesItems() {
+export default function AddExpenseForm() {
   const [input, setInput] = useState({ item: "", amount: "" });
   const dispatch = useDispatch();
 
@@ -13,25 +13,34 @@ export default function ExpensesItems() {
       };
     });
 
-  const handleKeyDown = (e) => {
-    const trimmedText = e.target.value.trim();
+  // const handleKeyDown = (e) => {
+  //   const trimmedText = e.target.value.trim();
 
-    if (e.key === "Enter" && trimmedText) {
-      dispatch({ type: "expenses/expensesAdded", payload: trimmedText });
-      console.log(input);
-      // setInput("");
-    }
+  //   if (e.key === "Enter" && trimmedText) {
+  //     dispatch({ type: "expenses/expensesAdded", payload: trimmedText });
+  //     console.log(input);
+  //     // setInput("");
+  //   }
+  // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const logger = console.log(input);
+
+    dispatch({ type: "expenses/expensesAdded", payload: logger });
+    // setInput("");
   };
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <div>
         Item
         <input
           name="item"
           value={input.item}
           onChange={handleChange}
-          onKeyDown={handleKeyDown}
+          // onKeyDown={handleKeyDown}
         ></input>
       </div>
       <div>
@@ -40,9 +49,10 @@ export default function ExpensesItems() {
           name="amount"
           value={input.amount}
           onChange={handleChange}
-          onKeyDown={handleKeyDown}
+          // onKeyDown={handleKeyDown}
         ></input>
       </div>
-    </>
+      <button>Add Expense</button>
+    </form>
   );
 }
