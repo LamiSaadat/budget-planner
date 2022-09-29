@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import "./AddExpenseForm.scss";
 
 export default function AddExpenseForm() {
   const [input, setInput] = useState({ item: "", amount: "" });
@@ -33,26 +34,31 @@ export default function AddExpenseForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        Item
-        <input
-          name="item"
-          value={input.item}
-          onChange={handleChange}
-          // onKeyDown={handleKeyDown}
-        ></input>
+    <form onSubmit={handleSubmit} className="expensesForm">
+      <div className="expensesForm__form">
+        <div className="expensesForm__label">
+          Item
+          <input
+            className="expensesForm__input"
+            name="item"
+            value={input.item}
+            onChange={handleChange}
+            // onKeyDown={handleKeyDown}
+          ></input>
+        </div>
+        <div className="expensesForm__label">
+          Amount
+          <input
+            className="expensesForm__input"
+            name="amount"
+            value={input.amount}
+            onChange={handleChange}
+            // onKeyDown={handleKeyDown}
+          ></input>
+        </div>
       </div>
-      <div>
-        Amount
-        <input
-          name="amount"
-          value={input.amount}
-          onChange={handleChange}
-          // onKeyDown={handleKeyDown}
-        ></input>
-      </div>
-      <button>Add Expense</button>
+
+      <button className="expensesForm__btn">Add Expense</button>
     </form>
   );
 }

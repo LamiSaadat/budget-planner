@@ -1,0 +1,12 @@
+.expensesForm {
+  display: flex;
+  flex-direction: column;
+
+  &__form {
+    display: flex;
+  }
+
+  &__btn {
+    width: 15%;
+  }
+}
