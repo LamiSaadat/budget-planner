@@ -1,27 +1,48 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
-function nextItem(item) {
-  const maxId = item.reduce((maxId, item) => Math.max(item.id, maxId), -1);
-  return maxId + 1;
-}
+const url = "http://localhost:8080";
+
+// function nextItem(item) {
+//   const maxId = item.reduce((maxId, item) => Math.max(item.id, maxId), -1);
+//   return maxId + 1;
+// }
+
+const initialState = {
+  expenseItems: [],
+  expenseAmount: 0,
+  isLoading: true,
+};
+
+export const getExpenseItems = createAsyncThunk(
+  "expenses/getExpenseItems",
+  async () => {
+    try {
+      const res = await axios(url);
+      console.log(res.data);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 
 export const expensesSlice = createSlice({
   name: "expenses",
-  initialState: {
-    expenses: [{}],
-  },
-  reducers: {
-    expenseAdded: (state, action) => {
-      return {
-        id: nextItem(state),
-        item: action.payload,
-        amount: action.payload,
-      };
+  initialState,
+  extraReducers: {
+    [getExpenseItems.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getExpenseItems.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.expenseItems = action.payload;
+    },
+    [getExpenseItems.rejected]: (state) => {
+      state.isLoading = false;
     },
   },
 });
-
-export const { expenseAdded } = expensesSlice.actions;
 
 export default expensesSlice.reducer;
 
