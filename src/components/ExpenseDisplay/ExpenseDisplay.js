@@ -9,9 +9,8 @@ export default function ExpenseDisplay() {
   const { expenseItems } = useSelector((store) => store.expenses);
 
   return (
-    <div className="expenses">
-      <h2>Expenses</h2>
-      <div className="expenses__details">
+    <div className="expensesContainer">
+      <div className="expensesContainer__items">
         {expenseItems.map((item) => {
           return <ExpenseItem key={item.id} {...item} />;
         })}

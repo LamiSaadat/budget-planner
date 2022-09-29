@@ -1,0 +1,15 @@
+.expenses {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  border: 0.0625rem solid black;
+  border-radius: 0.3125rem;
+
+  &:not(:last-child) {
+    border-bottom: none;
+  }
+
+  &__item {
+    text-transform: capitalize;
+  }
+}

@@ -1,13 +1,8 @@
-.expenses {
-  &__details {
-    display: flex;
-    justify-content: center;
-  }
+.expensesContainer {
+  width: 80%;
+  margin: 0 auto;
 
-  &__item,
-  &__amount {
-    padding: 0.5rem 1rem;
-    width: 30%;
-    border: 0.05rem solid rgb(130, 128, 128);
+  &__items {
+    margin-top: 2rem;
   }
 }
