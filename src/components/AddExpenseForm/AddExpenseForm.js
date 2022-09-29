@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { addExpenseItem } from "../../features/expenses/expensesSlice";
 import "./AddExpenseForm.scss";
 
 export default function AddExpenseForm() {
@@ -27,10 +28,7 @@ export default function AddExpenseForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const logger = console.log(input);
-
-    dispatch({ type: "expenses/expensesAdded", payload: logger });
-    // setInput("");
+    dispatch(addExpenseItem(input));
   };
 
   return (

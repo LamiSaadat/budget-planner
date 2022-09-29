@@ -10,7 +10,6 @@ const url = "http://localhost:8080";
 
 const initialState = {
   expenseItems: [],
-  expenseAmount: 0,
   isLoading: true,
 };
 
@@ -24,6 +23,14 @@ export const getExpenseItems = createAsyncThunk(
     } catch (error) {
       console.log(error);
     }
+  }
+);
+
+export const addExpenseItem = createAsyncThunk(
+  "expenses/addExpenseItem",
+  async (newItem) => {
+    const response = await axios.post(url, newItem);
+    return response.data;
   }
 );
 
@@ -41,47 +48,10 @@ export const expensesSlice = createSlice({
     [getExpenseItems.rejected]: (state) => {
       state.isLoading = false;
     },
+    [addExpenseItem.fulfilled]: (state, action) => {
+      state.expenseItems.push(action.payload);
+    },
   },
 });
 
 export default expensesSlice.reducer;
-
-// function addExpenseItem(item) {
-//   return {
-//     type: "ADD_EXPENSES",
-//     payload: item,
-//   };
-// }
-
-// // function removeExpensesItem() {
-// //   return {
-// //     type: "REMOVE_FAVORITE_THING",
-// //   };
-// // }
-
-// function sumAllExpenses() {
-//   return {
-//     type: "SUM_EXPENSES",
-//   };
-// }
-
-// const intialState = {
-//   expenses: [{ item: null, amount: null }],
-// };
-
-// function expensesReducer(state = intialState, action) {
-//   switch (action.type) {
-//     case "ADD_EXPENSES":
-//       return [...state, action.payload];
-// case "REMOVE_EXPENSES": {
-//   const updatedArr = expenses.filter(
-//     (expense) => expense !== action.payload.toLowerCase()
-//   );
-//   return updatedArr;
-// }
-//     case "SUM_EXPENSES":
-//       return
-//     default:
-//       return state;
-//   }
-// }
