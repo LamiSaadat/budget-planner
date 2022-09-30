@@ -38,9 +38,9 @@ export const addExpenseItem = createAsyncThunk(
 
 export const deleteExpenseItem = createAsyncThunk(
   "expenses/deleteExpenseItem",
-  async (selectedItem, { rejectWithValue }) => {
+  async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(url, selectedItem);
+      const response = await axios.delete(`${url}/${id}`);
       return response.data;
     } catch (err) {
       if (!err.response) {
