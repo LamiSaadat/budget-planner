@@ -3,11 +3,6 @@ import axios from "axios";
 
 const url = "http://localhost:8080";
 
-// function nextItem(item) {
-//   const maxId = item.reduce((maxId, item) => Math.max(item.id, maxId), -1);
-//   return maxId + 1;
-// }
-
 const initialState = {
   expenseItems: [],
   isLoading: true,
@@ -28,9 +23,16 @@ export const getExpenseItems = createAsyncThunk(
 
 export const addExpenseItem = createAsyncThunk(
   "expenses/addExpenseItem",
-  async (newItem) => {
-    const response = await axios.post(url, newItem);
-    return response.data;
+  async (newItem, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(url, newItem);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
   }
 );
 

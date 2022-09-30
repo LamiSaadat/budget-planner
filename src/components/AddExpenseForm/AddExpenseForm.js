@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addExpenseItem } from "../../features/expenses/expensesSlice";
+import {
+  addExpenseItem,
+  getExpenseItems,
+} from "../../features/expenses/expensesSlice";
 import "./AddExpenseForm.scss";
 
 export default function AddExpenseForm() {
@@ -15,20 +18,15 @@ export default function AddExpenseForm() {
       };
     });
 
-  // const handleKeyDown = (e) => {
-  //   const trimmedText = e.target.value.trim();
-
-  //   if (e.key === "Enter" && trimmedText) {
-  //     dispatch({ type: "expenses/expensesAdded", payload: trimmedText });
-  //     console.log(input);
-  //     // setInput("");
-  //   }
-  // };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(addExpenseItem(input));
+    dispatch(addExpenseItem(input))
+      .unwrap()
+      .then(() => {
+        dispatch(getExpenseItems());
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -41,7 +39,6 @@ export default function AddExpenseForm() {
             name="item"
             value={input.item}
             onChange={handleChange}
-            // onKeyDown={handleKeyDown}
           ></input>
         </div>
         <div className="expensesForm__label">
@@ -51,7 +48,6 @@ export default function AddExpenseForm() {
             name="amount"
             value={input.amount}
             onChange={handleChange}
-            // onKeyDown={handleKeyDown}
           ></input>
         </div>
       </div>
