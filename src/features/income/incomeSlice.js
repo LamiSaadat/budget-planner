@@ -14,4 +14,6 @@ export const incomeSlice = createSlice({
   },
 });
 
+export const { addIncome } = incomeSlice.actions;
+
 export default incomeSlice.reducer;
