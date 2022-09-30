@@ -36,6 +36,21 @@ export const addExpenseItem = createAsyncThunk(
   }
 );
 
+export const deleteExpenseItem = createAsyncThunk(
+  "expenses/deleteExpenseItem",
+  async (selectedItem, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete(url, selectedItem);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const expensesSlice = createSlice({
   name: "expenses",
   initialState,
