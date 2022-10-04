@@ -6,12 +6,17 @@ import Navigator from "./components/Navigator/Navigator";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getExpenseItems } from "./features/expenses/expensesSlice";
+import { getIncome } from "./features/income/incomeSlice";
 
 function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getExpenseItems());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getIncome());
   }, [dispatch]);
 
   return (
