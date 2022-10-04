@@ -11,9 +11,12 @@ export const incomeSlice = createSlice({
     addIncome: (state, action) => {
       state.income = action.payload;
     },
+    reduceIncome: (state, action) => {
+      state.income = action.payload;
+    },
   },
 });
 
-export const { addIncome } = incomeSlice.actions;
+export const { addIncome, reduceIncome } = incomeSlice.actions;
 
 export default incomeSlice.reducer;
