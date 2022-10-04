@@ -5,6 +5,7 @@ const url = "http://localhost:8080";
 
 const initialState = {
   expenseItems: [],
+  totalExpenses: 0,
   isLoading: true,
 };
 
@@ -54,6 +55,15 @@ export const deleteExpenseItem = createAsyncThunk(
 export const expensesSlice = createSlice({
   name: "expenses",
   initialState,
+  reducers: {
+    calculteTotalExpenses: (state) => {
+      let total = 0;
+
+      state.expenseItems.forEach((item) => (total += Number(item.amount)));
+
+      state.totalExpenses = total;
+    },
+  },
   extraReducers: {
     [getExpenseItems.pending]: (state) => {
       state.isLoading = true;
@@ -70,5 +80,7 @@ export const expensesSlice = createSlice({
     },
   },
 });
+
+export const { calculteTotalExpenses } = expensesSlice.actions;
 
 export default expensesSlice.reducer;
