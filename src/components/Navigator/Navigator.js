@@ -21,7 +21,7 @@ export default function Navigator() {
 
   useEffect(() => {
     dispatch(calculteTotalExpenses());
-  }, [expenseItems]);
+  }, [expenseItems, dispatch]);
 
   return (
     <div className="tabs">
