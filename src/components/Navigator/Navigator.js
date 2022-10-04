@@ -37,7 +37,10 @@ export default function Navigator() {
         <h2>Expenses</h2>
         <h2>{totalExpenses}</h2>
       </div>
-      <h2 className="tabs__tab">Savings</h2>
+      <div className="tabs__tab">
+        <h2>Savings</h2>
+        <h2>{income - totalExpenses}</h2>
+      </div>
     </div>
   );
 }
