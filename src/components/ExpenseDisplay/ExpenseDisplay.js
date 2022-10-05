@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import AddExpenseForm from "../AddExpenseForm/AddExpenseForm";
+import EditExpenseModal from "../EditExpenseModal/EditExpenseModal";
 import ExpenseItem from "../ExpenseItem/ExpenseItem";
 
 import "./ExpenseDisplay.scss";
@@ -16,6 +17,7 @@ export default function ExpenseDisplay() {
         })}
       </div>
       <AddExpenseForm />
+      <EditExpenseModal />
     </div>
   );
 }
