@@ -42,6 +42,7 @@ const ExpenseItem = ({ id, item, amount }) => {
         <EditExpenseModal
           itemRef={itemRef.current.textContent}
           amountRef={amountRef.current.textContent}
+          id={id}
         />
       )}
     </>
