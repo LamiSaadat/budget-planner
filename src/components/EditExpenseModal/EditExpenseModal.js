@@ -15,9 +15,8 @@ function EditExpenseModal({ id, itemRef, amountRef }) {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setInput((prevInput) => {
+    setInput(() => {
       return {
-        ...prevInput,
         [e.target.name]: e.target.value,
       };
     });
@@ -39,17 +38,21 @@ function EditExpenseModal({ id, itemRef, amountRef }) {
         <div className="editModal__label">
           Item
           <input
+            name="item"
+            type="text"
             className="editModal__input"
-            defaultValue={itemRef}
             onChange={handleChange}
+            value={input.item}
           ></input>
         </div>
         <div className="editModal__label">
           Amount
           <input
+            name="amount"
+            type="number"
             className="editModal__input"
-            defaultValue={amountRef}
             onChange={handleChange}
+            value={input.amount}
           ></input>
         </div>
       </div>
