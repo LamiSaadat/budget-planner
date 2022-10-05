@@ -11,8 +11,8 @@ export default function ExpenseDisplay() {
   return (
     <div className="expensesContainer">
       <div className="expensesContainer__items">
-        {expenseItems.map((item) => {
-          return <ExpenseItem key={item.id} {...item} />;
+        {expenseItems.map((item, index) => {
+          return <ExpenseItem key={index} {...item} />;
         })}
       </div>
       <AddExpenseForm />

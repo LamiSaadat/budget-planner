@@ -4,25 +4,25 @@ import { addIncome, getIncome } from "../../features/income/incomeSlice";
 import "./IncomeDisplay.scss";
 
 export default function IncomeDisplay() {
-  const [incomeInput, setIncomeInput] = useState({ income: "" });
+  const [input, setInput] = useState({ income: "" });
   const { income } = useSelector((store) => store.income);
   const dispatch = useDispatch();
 
   const handleChange = (e) =>
-    setIncomeInput(() => {
+    setInput(() => {
       return { [e.target.name]: e.target.value };
     });
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(addIncome(incomeInput))
+    dispatch(addIncome(input))
       .unwrap()
       .then(() => {
         dispatch(getIncome());
       })
       .catch((err) => console.log(err));
-    console.log(incomeInput);
+    console.log(input);
   };
 
   return (
@@ -32,7 +32,7 @@ export default function IncomeDisplay() {
       <form onSubmit={handleSubmit} className="income__add-form">
         <input
           name="income"
-          value={incomeInput.income}
+          value={input.income}
           onChange={handleChange}
         ></input>
         <button>Add</button>

@@ -18,7 +18,7 @@ const ExpenseItem = ({ id, item, amount }) => {
       .catch((err) => console.log(err));
   };
   return (
-    <div className="expenses" key={id}>
+    <div className="expenses">
       <p className="expenses__item">{item}</p>
       <p className="expenses__amount">{amount}</p>
       <button onClick={handleClick}>remove</button>
