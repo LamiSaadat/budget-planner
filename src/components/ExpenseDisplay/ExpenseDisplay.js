@@ -17,7 +17,6 @@ export default function ExpenseDisplay() {
         })}
       </div>
       <AddExpenseForm />
-      <EditExpenseModal />
     </div>
   );
 }
