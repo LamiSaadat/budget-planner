@@ -37,6 +37,21 @@ export const addExpenseItem = createAsyncThunk(
   }
 );
 
+export const editExpenseItem = createAsyncThunk(
+  "expenses/editExpenseItem",
+  async (id, { rejectWithValue }) => {
+    try {
+      const response = await axios.put(`${url}/${id}`);
+      return response.data;
+    } catch (err) {
+      if (!err.response) {
+        throw err;
+      }
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+
 export const deleteExpenseItem = createAsyncThunk(
   "expenses/deleteExpenseItem",
   async (id, { rejectWithValue }) => {
