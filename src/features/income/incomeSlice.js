@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = "http://localhost:8080";
+const url = "http://localhost:8080/income";
 
 const initialState = {
   income: 0,
@@ -22,7 +22,7 @@ export const addIncome = createAsyncThunk(
   "income/addIncome",
   async (newIncome, { rejectWithValue }) => {
     try {
-      const res = await axios.post(url, newIncome);
+      const res = await axios.put(url, newIncome);
       return res.data;
     } catch (error) {
       if (!error.reponse) {
