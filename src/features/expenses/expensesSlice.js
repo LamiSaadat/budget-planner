@@ -25,6 +25,7 @@ export const getExpenseItems = createAsyncThunk(
 export const addExpenseItem = createAsyncThunk(
   "expenses/addExpenseItem",
   async (newItem, { rejectWithValue }) => {
+    console.log(newItem);
     try {
       const response = await axios.post(url, newItem);
       return response.data;
@@ -39,15 +40,18 @@ export const addExpenseItem = createAsyncThunk(
 
 export const editExpenseItem = createAsyncThunk(
   "expenses/editExpenseItem",
-  async (id, { rejectWithValue }) => {
+  async ({ id, item, amount }) => {
+    console.log(id, item, amount);
     try {
-      const response = await axios.put(`${url}/${id}`);
+      const response = await axios.put(`${url}/${id}`, { id, item, amount });
+      console.log(response.data);
       return response.data;
     } catch (err) {
-      if (!err.response) {
-        throw err;
-      }
-      return rejectWithValue(err.response.data);
+      console.log(err);
+      // if (!err.response) {
+      //   throw err;
+      // }
+      // return rejectWithValue(err.response.data);
     }
   }
 );
@@ -93,6 +97,14 @@ export const expensesSlice = createSlice({
     [addExpenseItem.fulfilled]: (state, action) => {
       state.expenseItems.push(action.payload);
     },
+    // [editExpenseItem.fulfilled]: (state, action) => {},
+    // [deleteExpenseItem.fulfilled]: (state, action) => {
+    //   let item = state.expenseItems.find(
+    //     (item) => item.id === action.payload.id
+    //   );
+
+    //   state.expenseItems.slice(item, 1);
+    // },
   },
 });
 

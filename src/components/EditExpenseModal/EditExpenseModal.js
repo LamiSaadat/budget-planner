@@ -15,8 +15,9 @@ function EditExpenseModal({ id, itemRef, amountRef }) {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    setInput(() => {
+    setInput((prevState) => {
       return {
+        ...prevState,
         [e.target.name]: e.target.value,
       };
     });
