@@ -15,6 +15,8 @@ export default function Navigator() {
     dispatch(calculteTotalExpenses());
   }, [expenseItems, dispatch]);
 
+  let savings = String(income.income - totalExpenses);
+
   return (
     <div className="tabs">
       <IncomeDisplay />
@@ -24,7 +26,7 @@ export default function Navigator() {
       </div>
       <div className="tabs__tab">
         <h2>Savings</h2>
-        <h2>{income.income - totalExpenses}</h2>
+        <h2>{savings}</h2>
       </div>
     </div>
   );
