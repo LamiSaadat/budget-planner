@@ -5,6 +5,7 @@ import "./IncomeDisplay.scss";
 
 export default function IncomeDisplay() {
   const [input, setInput] = useState({ income: "" });
+  const [showForm, setShowForm] = useState(true);
   const { income } = useSelector((store) => store.income);
   const dispatch = useDispatch();
 
@@ -22,21 +23,29 @@ export default function IncomeDisplay() {
         dispatch(getIncome());
       })
       .catch((err) => console.log(err));
-    console.log(input);
+
+    setShowForm(false);
+  };
+
+  const handleEditBtn = () => {
+    setShowForm(!showForm);
   };
 
   return (
     <div className="tabs__tab">
       <h2>Income</h2>
       <h2>{income.income}</h2>
-      <form onSubmit={handleSubmit} className="income__add-form">
-        <input
-          name="income"
-          value={input.income}
-          onChange={handleChange}
-        ></input>
-        <button>Add</button>
-      </form>
+      {showForm && (
+        <form onSubmit={handleSubmit} className="income__add-form">
+          <input
+            name="income"
+            value={input.income}
+            onChange={handleChange}
+          ></input>
+          <button>Add</button>
+        </form>
+      )}
+      <button onClick={handleEditBtn}>Edit</button>
     </div>
   );
 }
