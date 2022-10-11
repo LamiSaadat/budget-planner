@@ -14,7 +14,7 @@ export const getExpenseItems = createAsyncThunk(
   async () => {
     try {
       const res = await axios(url);
-      console.log(res.data);
+
       return res.data;
     } catch (error) {
       console.log(error);
@@ -28,6 +28,7 @@ export const addExpenseItem = createAsyncThunk(
     console.log(newItem);
     try {
       const response = await axios.post(url, newItem);
+
       return response.data;
     } catch (err) {
       if (!err.response) {
@@ -44,14 +45,10 @@ export const editExpenseItem = createAsyncThunk(
     console.log(id, item, amount);
     try {
       const response = await axios.put(`${url}/${id}`, { id, item, amount });
-      console.log(response.data);
+
       return response.data;
     } catch (err) {
-      console.log(err);
-      // if (!err.response) {
-      //   throw err;
-      // }
-      // return rejectWithValue(err.response.data);
+      return err;
     }
   }
 );
@@ -94,17 +91,36 @@ export const expensesSlice = createSlice({
     [getExpenseItems.rejected]: (state) => {
       state.isLoading = false;
     },
-    [addExpenseItem.fulfilled]: (state, action) => {
-      state.expenseItems.push(action.payload);
+    [addExpenseItem.pending]: (state) => {
+      state.isLoading = true;
     },
-    // [editExpenseItem.fulfilled]: (state, action) => {},
-    // [deleteExpenseItem.fulfilled]: (state, action) => {
-    //   let item = state.expenseItems.find(
-    //     (item) => item.id === action.payload.id
-    //   );
-
-    //   state.expenseItems.slice(item, 1);
-    // },
+    [addExpenseItem.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.expenseItems = action.payload;
+    },
+    [addExpenseItem.rejected]: (state) => {
+      state.isLoading = false;
+    },
+    [editExpenseItem.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [editExpenseItem.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.expenseItems = action.payload;
+    },
+    [editExpenseItem.rejected]: (state) => {
+      state.isLoading = false;
+    },
+    [deleteExpenseItem.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [deleteExpenseItem.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.expenseItems = action.payload;
+    },
+    [deleteExpenseItem.rejected]: (state) => {
+      state.isLoading = false;
+    },
   },
 });
 
