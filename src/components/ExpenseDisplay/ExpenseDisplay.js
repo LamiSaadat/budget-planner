@@ -10,6 +10,7 @@ export default function ExpenseDisplay() {
 
   return (
     <div className="expenses-container">
+      <h2 className="expenses-container__title title">Expenses</h2>
       <div className="expenses-container__items">
         {expenseItems.map((item, index) => {
           return <ExpenseItem key={index} {...item} />;

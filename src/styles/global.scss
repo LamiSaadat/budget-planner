@@ -3,6 +3,13 @@
 @use "../styles/variables.scss" as *;
 @use "../styles/mixins.scss" as *;
 
+.title {
+  @include body-large-mobile;
+  @include tablet {
+    @include body-large-tablet-desktop;
+  }
+}
+
 .svg-btn {
   border: none;
   background: transparent;
@@ -29,9 +36,9 @@
   display: flex;
   flex-direction: column;
 
-  &__title {
-    @include body-large-tablet-desktop;
-  }
+  // &__title {
+  //   @include body-large-tablet-desktop;
+  // }
   &__input-container {
     display: flex;
     flex-direction: column;

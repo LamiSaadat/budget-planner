@@ -31,7 +31,7 @@ export default function AddExpenseForm() {
 
   return (
     <form onSubmit={handleSubmit} className="form">
-      <h2 className="form__title">Add Expense</h2>
+      <h2 className="form__title title">Add Expense</h2>
       <div className="form__form">
         <div className="form__input-container">
           <label className="form__label">Item</label>
