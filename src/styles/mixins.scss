@@ -1,0 +1,45 @@
+@use "./variables.scss" as *;
+
+@mixin tablet {
+  @media (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin dekstop {
+  @media (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+//Body text size for mobile
+@mixin body-large-mobile {
+  font-size: 0.9375rem;
+  line-height: 1.625rem;
+}
+
+@mixin body-medium-mobile {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+@mixin body-small-mobile {
+  font-size: 0.6875rem;
+  line-height: 1rem;
+}
+
+//Body text size for tablet and desktop
+@mixin body-large-tablet-desktop {
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+@mixin body-medium-tablet-desktop {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+
+@mixin body-small-tablet-desktop {
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+}
