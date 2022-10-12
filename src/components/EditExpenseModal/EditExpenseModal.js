@@ -4,6 +4,7 @@ import {
   editExpenseItem,
   getExpenseItems,
 } from "../../features/expenses/expensesSlice";
+import "./EditExpenseModal.scss";
 
 function EditExpenseModal({ id, itemRef, amountRef }) {
   const [input, setInput] = useState({
@@ -34,30 +35,30 @@ function EditExpenseModal({ id, itemRef, amountRef }) {
       .catch((err) => console.log(err));
   };
   return (
-    <form className="editModal" onSubmit={handleSubmit}>
-      <div className="editModal__form">
-        <div className="editModal__label">
-          Item
+    <form className="editModal form" onSubmit={handleSubmit}>
+      <div className="form__form">
+        <div className="form__input-container">
+          <label className="form__label">Item</label>
           <input
             name="item"
             type="text"
-            className="editModal__input"
+            className="form__input"
             onChange={handleChange}
             value={input.item}
           ></input>
         </div>
-        <div className="editModal__label">
-          Amount
+        <div className="form__input-container">
+          <label className="form__label">Amount</label>
           <input
             name="amount"
             type="number"
-            className="editModal__input"
+            className="form__input"
             onChange={handleChange}
             value={input.amount}
           ></input>
         </div>
       </div>
-      <button className="editModal__btn">Update Expense</button>
+      <button className="form__btn">Edit</button>
     </form>
   );
 }
