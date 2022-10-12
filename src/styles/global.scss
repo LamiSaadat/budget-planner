@@ -1,5 +1,6 @@
 //input field
 //button
+@use "../styles/variables.scss" as *;
 
 .svg-btn {
   border: none;
@@ -10,4 +11,19 @@
 .svg-btn svg {
   height: 1rem;
   width: 1rem;
+}
+
+.form-btn {
+  width: 25%;
+  margin-top: 0.5rem;
+  height: 1.8rem;
+  background-color: $form-btn-bg;
+  color: $form-btn-font;
+  border: 0.07rem solid $form-btn-font;
+  font-weight: 700;
+  border-radius: 5px;
+}
+
+.input-field {
+  height: 2rem;
 }

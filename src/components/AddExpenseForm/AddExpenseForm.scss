@@ -1,12 +1,32 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/global.scss" as *;
+
 .expensesForm {
   display: flex;
   flex-direction: column;
 
-  &__form {
+  &__title {
+    @include body-large-tablet-desktop;
+  }
+  &__input-container {
     display: flex;
+    flex-direction: column;
+    width: 48%;
   }
 
-  &__btn {
-    width: 15%;
+  &__form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    margin: 0.2rem;
+    width: 70%;
+    @include body-large-mobile;
+
+    @include tablet {
+      width: 50%;
+    }
   }
 }
