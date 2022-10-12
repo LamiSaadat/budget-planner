@@ -10,11 +10,14 @@ export default function IncomeDisplay({
   return (
     showForm && (
       <form onSubmit={handleSubmit} className="income__add-form">
-        <input
-          name="income"
-          value={input.income}
-          onChange={handleChange}
-        ></input>
+        <label>
+          Add Income
+          <input
+            name="income"
+            value={input.income}
+            onChange={handleChange}
+          ></input>
+        </label>
         <button>Add</button>
       </form>
     )
