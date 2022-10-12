@@ -43,13 +43,13 @@ export default function Header() {
   };
 
   return (
-    <div>
-      <h1>Expense Tracker</h1>
+    <div className="header-container">
+      <h1 className="header-container__title">Expense Tracker</h1>
       <div className="tabs">
         <div className="tabs__tab">
-          <h2>Income</h2>
+          <h2 className="tabs__title">Income</h2>
           <div className="tabs__income">
-            <h2>{income.income}</h2>
+            <h2 className="tabs__amount">{income.income}</h2>
             <button onClick={handleEditBtn} className="tabs__edit-btn">
               <svg
                 class="w-6 h-6"
@@ -69,12 +69,12 @@ export default function Header() {
         </div>
 
         <div className="tabs__tab">
-          <h2>Expenses</h2>
-          <h2>{totalExpenses}</h2>
+          <h2 className="tabs__title">Expenses</h2>
+          <h2 className="tabs__amount">{totalExpenses}</h2>
         </div>
         <div className="tabs__tab">
-          <h2>Savings</h2>
-          <h2>{savings}</h2>
+          <h2 className="tabs__title">Savings</h2>
+          <h2 className="tabs__amount">{savings}</h2>
         </div>
       </div>
       <IncomeForm
