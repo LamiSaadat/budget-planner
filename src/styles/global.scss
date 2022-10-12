@@ -1,6 +1,7 @@
 //input field
 //button
 @use "../styles/variables.scss" as *;
+@use "../styles/mixins.scss" as *;
 
 .svg-btn {
   border: none;
@@ -24,6 +25,51 @@
   border-radius: 5px;
 }
 
-.input-field {
-  height: 2rem;
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @include body-large-tablet-desktop;
+  }
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+  }
+
+  &__form {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__label {
+    margin: 0.2rem;
+    width: 70%;
+    @include body-large-mobile;
+
+    @include tablet {
+      width: 50%;
+    }
+  }
+
+  &__btn {
+    width: 25%;
+    margin-top: 0.5rem;
+    height: 1.8rem;
+    background-color: $form-btn-bg;
+    color: $form-btn-font;
+    border: 0.07rem solid $form-btn-font;
+    font-weight: 700;
+    border-radius: 5px;
+    height: 2rem;
+  }
+
+  &__input {
+    height: 2rem;
+  }
+
+  &__input-income {
+    width: 50%;
+  }
 }

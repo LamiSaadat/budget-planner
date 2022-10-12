@@ -30,22 +30,22 @@ export default function AddExpenseForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="expensesForm">
-      <h2 className="expensesForm__title">Add Expense</h2>
-      <div className="expensesForm__form">
-        <div className="expensesForm__input-container">
-          <label className="expensesForm__label label">Item</label>
+    <form onSubmit={handleSubmit} className="form">
+      <h2 className="form__title">Add Expense</h2>
+      <div className="form__form">
+        <div className="form__input-container">
+          <label className="form__label">Item</label>
           <input
-            className="expensesForm__input input-field"
+            className="form__input"
             name="item"
             value={input.item}
             onChange={handleChange}
           ></input>
         </div>
-        <div className="expensesForm__input-container">
-          <label className="expensesForm__label label">Amount</label>
+        <div className="form__input-container">
+          <label className="form__label">Amount</label>
           <input
-            className="expensesForm__input input-field"
+            className="form__input"
             name="amount"
             value={input.amount}
             onChange={handleChange}
@@ -53,7 +53,7 @@ export default function AddExpenseForm() {
         </div>
       </div>
 
-      <button className="expensesForm__btn form-btn">Add</button>
+      <button className="form__btn">Add</button>
     </form>
   );
 }
