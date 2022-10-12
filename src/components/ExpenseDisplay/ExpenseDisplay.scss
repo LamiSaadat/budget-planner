@@ -1,8 +1,12 @@
-.expensesContainer {
-  width: 80%;
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss" as *;
+
+.expenses-container {
   margin: 0 auto;
+  max-width: 500px;
+  width: 95%;
 
   &__items {
-    margin-top: 2rem;
+    margin: 2rem 0;
   }
 }
