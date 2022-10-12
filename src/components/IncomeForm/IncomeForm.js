@@ -9,9 +9,8 @@ export default function IncomeDisplay({
 }) {
   return (
     showForm && (
-      <form onSubmit={handleSubmit} className="form">
+      <form onSubmit={handleSubmit} className="income-form form">
         <h2 className="form__title title">Add Income</h2>
-        <label className="form__label">Add Income</label>
         <input
           className="form__input form__input-income"
           name="income"

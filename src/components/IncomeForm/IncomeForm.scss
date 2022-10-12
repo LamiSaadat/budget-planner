@@ -1,13 +1,13 @@
-.income {
-  &__details {
-    display: flex;
-    justify-content: center;
-  }
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss" as *;
 
-  &__month,
-  &__amount {
-    padding: 0.5rem 1rem;
-    width: 30%;
-    border: 0.05rem solid rgb(130, 128, 128);
+.income-form {
+  max-width: 500px;
+  width: 95%;
+  margin: 0 auto;
+
+  @include tablet {
+    width: 100%;
+    margin: 1rem 0;
   }
 }

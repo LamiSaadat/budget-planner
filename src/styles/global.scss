@@ -21,24 +21,10 @@
   width: 1rem;
 }
 
-.form-btn {
-  width: 25%;
-  margin-top: 0.5rem;
-  height: 1.8rem;
-  background-color: $form-btn-bg;
-  color: $form-btn-font;
-  border: 0.07rem solid $form-btn-font;
-  font-weight: 700;
-  border-radius: 5px;
-}
-
 .form {
   display: flex;
   flex-direction: column;
 
-  // &__title {
-  //   @include body-large-tablet-desktop;
-  // }
   &__input-container {
     display: flex;
     flex-direction: column;
