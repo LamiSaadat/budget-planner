@@ -1,2 +1,13 @@
 //input field
 //button
+
+.svg-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.svg-btn svg {
+  height: 1rem;
+  width: 1rem;
+}

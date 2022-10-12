@@ -1,12 +1,31 @@
+@use "../../styles/variables.scss" as *;
+@use "../../styles/mixins.scss" as *;
+@use "../../styles/global.scss" as *;
+
 .expenses {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0 1rem;
-  border: 0.0625rem solid black;
+  border: 0.0625rem solid $medium-brown;
   border-radius: 0.3125rem;
+  background-color: $list-bg;
+  color: $dark-brown;
+  height: 2.5rem;
 
   &:not(:last-child) {
     border-bottom: none;
+  }
+
+  &__info-container {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    @include body-medium-mobile;
+
+    @include tablet {
+      @include body-medium-tablet-desktop;
+    }
   }
 
   &__item {
