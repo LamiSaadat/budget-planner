@@ -7,7 +7,7 @@ import "./Header.scss";
 
 export default function Header() {
   const [input, setInput] = useState({ income: "" });
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const { income } = useSelector((store) => store.income);
   const { totalExpenses, expenseItems } = useSelector(
     (store) => store.expenses
