@@ -13,10 +13,6 @@
   color: $dark-brown;
   height: 2.5rem;
 
-  &:not(:last-child) {
-    border-bottom: none;
-  }
-
   &__info-container {
     width: 60%;
     display: flex;
