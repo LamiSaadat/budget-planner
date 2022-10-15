@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = "http://localhost:8080/income";
+const url = process.env.API_URL || process.env.LOCAL_URL;
 
 const initialState = {
   income: 0,

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = "http://localhost:8080/expenses";
+const url = process.env.API_URL || process.env.LOCAL_URL;
 
 const initialState = {
   expenseItems: [],
