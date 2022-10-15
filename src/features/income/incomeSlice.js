@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = process.env.API_URL;
+const url = "https://expense-tracker-api-ck0j.onrender.com";
 
 const initialState = {
   income: 0,
