@@ -13,7 +13,7 @@ export const getExpenseItems = createAsyncThunk(
   "expenses/getExpenseItems",
   async () => {
     try {
-      const res = await axios(url);
+      const res = await axios.get(url);
 
       return res.data;
     } catch (error) {
