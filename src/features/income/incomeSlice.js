@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = "https://expense-tracker-api-ck0j.onrender.com";
+const url = process.env.API_URL;
+const incomeEndpoint = `${url}/income`;
 
 const initialState = {
   income: 0,
@@ -10,7 +11,7 @@ const initialState = {
 
 export const getIncome = createAsyncThunk("income/getIncome", async () => {
   try {
-    const res = await axios.get(url);
+    const res = await axios.get(incomeEndpoint);
     console.log(res.data);
     return res.data;
   } catch (error) {
@@ -22,7 +23,7 @@ export const addIncome = createAsyncThunk(
   "income/addIncome",
   async (newIncome, { rejectWithValue }) => {
     try {
-      const res = await axios.put(url, newIncome);
+      const res = await axios.put(incomeEndpoint, newIncome);
       return res.data;
     } catch (error) {
       if (!error.reponse) {

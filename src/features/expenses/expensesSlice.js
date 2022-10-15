@@ -1,7 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const url = "https://expense-tracker-api-ck0j.onrender.com";
+const url = process.env.API_URL;
+const expenseEndpoint = `${url}/expenses`;
 
 const initialState = {
   expenseItems: [],
@@ -13,7 +14,7 @@ export const getExpenseItems = createAsyncThunk(
   "expenses/getExpenseItems",
   async () => {
     try {
-      const res = await axios.get(url);
+      const res = await axios.get(expenseEndpoint);
 
       return res.data;
     } catch (error) {
@@ -27,7 +28,7 @@ export const addExpenseItem = createAsyncThunk(
   async (newItem, { rejectWithValue }) => {
     console.log(newItem);
     try {
-      const response = await axios.post(url, newItem);
+      const response = await axios.post(expenseEndpoint, newItem);
 
       return response.data;
     } catch (err) {
@@ -44,7 +45,11 @@ export const editExpenseItem = createAsyncThunk(
   async ({ id, item, amount }) => {
     console.log(id, item, amount);
     try {
-      const response = await axios.put(`${url}/${id}`, { id, item, amount });
+      const response = await axios.put(`${expenseEndpoint}/${id}`, {
+        id,
+        item,
+        amount,
+      });
 
       return response.data;
     } catch (err) {
@@ -57,7 +62,7 @@ export const deleteExpenseItem = createAsyncThunk(
   "expenses/deleteExpenseItem",
   async (id, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(`${url}/${id}`);
+      const response = await axios.delete(`${expenseEndpoint}/${id}`);
       return response.data;
     } catch (err) {
       if (!err.response) {
