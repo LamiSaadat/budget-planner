@@ -26,7 +26,9 @@ export default function AddExpenseForm() {
       .then(() => {
         dispatch(getExpenseItems());
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        return err;
+      });
   };
 
   return (

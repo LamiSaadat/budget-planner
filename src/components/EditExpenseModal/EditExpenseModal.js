@@ -32,7 +32,9 @@ function EditExpenseModal({ id, itemRef, amountRef }) {
       .then(() => {
         dispatch(getExpenseItems());
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        return err;
+      });
   };
   return (
     <form className="editModal form" onSubmit={handleSubmit}>

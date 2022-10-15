@@ -14,7 +14,7 @@ export const getIncome = createAsyncThunk("income/getIncome", async () => {
     console.log(res.data);
     return res.data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 });
 

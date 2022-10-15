@@ -19,7 +19,9 @@ const ExpenseItem = ({ id, item, amount }) => {
       .then(() => {
         dispatch(getExpenseItems());
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        return err;
+      });
   };
 
   const openModal = () => {

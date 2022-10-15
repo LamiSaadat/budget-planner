@@ -17,7 +17,7 @@ export const getExpenseItems = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      console.log(error);
+      return error;
     }
   }
 );
